@@ -1,0 +1,83 @@
+
+<div id="CustomerRegisterForm">
+<h1>{{ 'customer.register.title' | t }}</h1>
+<div class="column">
+  	<p>
+      Join the AC Fam for free shipping on all orders of 2+ items and exclusive access to limited edition products.
+  </p>
+  <p>
+      We don’t like junk email anymore than you so we promise to keep it classy.
+  	</p>
+
+  	<!--
+  	<p>01 FREE SHIPPING</p>
+    <p>02 SECRET PRODUCTS</p>
+    <p class="dropdown" data-dropdown="1">03 WELL-WORN PROJECT</p>
+    <div class="dropdown-text" data-dropdown="1">
+        <h3>The Well-Worn Project</h3>
+        <p>Our product just gets better in time so we'll buy it back from you.</p>
+        <p>Return well-worn product for 50% off your next order.</p>
+        <p>Stay tuned to see what happens with the product you return.</p>
+        <p><a href="/pages/about-us#wellworn">Learn more</a>.</p>
+    </div>
+	-->
+</div>
+
+<div class="column">
+    <div class="prompt">Or make an account</div>
+{% form 'create_customer' %}
+
+  <input type="text"
+    name="customer[first_name]"
+    id="FirstName"
+    class="{% if form.errors contains 'first_name' %}input-error{% endif %}"
+    placeholder="{{ 'customer.register.first_name' | t }}"
+    spellcheck="false"
+    autocomplete="off"
+    autocapitalize="off">
+
+  <input type="text"
+    name="customer[last_name]"
+    id="LastName"
+    class="{% if form.errors contains 'last_name' %}input-error{% endif %}"
+    placeholder="{{ 'customer.register.last_name' | t }}"
+    spellcheck="false"
+    autocomplete="off"
+    autocapitalize="off">
+
+  <input type="email"
+    name="customer[email]"
+    id="Email"
+    class="{% if form.errors contains 'email' %}input-error{% endif %}"
+    placeholder="{{ 'customer.register.email' | t }}"
+    value="{% if form.email %}{{ form.email }}{% endif %}"
+    spellcheck="false"
+    autocomplete="off"
+    autocapitalize="off">
+
+  <input type="tel"
+    name="customer[phone]"
+    id="Phone"
+    class="{% if form.errors contains 'phone' %}input-error{% endif %}"
+    placeholder="{{ 'customer.addresses.phone' | t }}"
+    value="{% if form.phone %}{{ form.phone }}{% endif %}"
+    autocomplete="off"
+    autocapitalize="off">
+
+  <input type="password"
+    name="customer[password]"
+    id="CreatePassword"
+    class="{% if form.errors contains 'password' %}input-error{% endif %}"
+    placeholder="{{ 'customer.register.password' | t }}">
+
+
+    <p><a id="CreateAccount" href="{{ shop.url }}/account/login">{{ 'customer.register.go_to_login' | t }}</a></p>
+
+  <p>
+    <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn">
+  </p>
+
+  {{ form.errors | default_errors }}
+{% endform %}
+</div>
+</div>

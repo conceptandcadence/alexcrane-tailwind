@@ -1,0 +1,98 @@
+{% comment %}<h1>{{ 'customer.account.title' | t }}</h1>
+
+<h2>{{ 'customer.orders.title' | t }}</h2>{% endcomment %}
+
+<div id="page-content" class="tabs">
+    <h1>
+        Ahoy {{ customer.first_name }}!
+        <span>{{ 'Sign out' | customer_logout_link }}</span>
+
+        {% if customer.addresses_count <= 0 %}
+        <a href="/account/addresses" style="color:#33CBEE; text-decoration:none;">Add your address for free shipping on orders of 2+ items</a>
+        {% endif %}
+    </h1>
+
+    <section class="content">
+        <nav>
+            <ul>
+                <li data-tab-num="0" data-visible="true">
+                    <span class="num">01</span><span class="title">Info</span>
+                </li>
+                <li data-tab-num="1" data-visible="false">
+                    <span class="num">02</span><span class="title">Orders</span>
+                </li>
+                {% comment %}
+                <li data-tab-num="2" data-visible="false">
+                    <span class="num">03</span><span class="title">Well-Worn</span>
+                </li>
+                {% endcomment %}
+            </ul>
+        </nav>
+        <div class="text">
+            <article data-tab-num="0" data-visible="true">
+                <h3>Basic Info</h3>
+                <div class="row">
+                    {{ customer.first_name }}&nbsp;{{ customer.last_name }}
+                </div>
+                <div class="row">
+                    {{ customer.email }}
+                </div>
+
+                <h3>Shipping Address<span><a href="/account/addresses">Edit</a></span></h3>
+                <div class="row">
+                    {% if customer.addresses_count > 0 %}
+                    {{ customer.default_address.address1 }} {{ customer.default_address.address2 }}<br>
+                    {{ customer.default_address.city }}, {{ customer.default_address.province }} {{ customer.default_address.zip }} (Primary)
+                    {% else %}
+                    <a class="button" href="/account/addresses">Add Address</a>
+                    {% endif %}
+                </div>
+            </article>
+
+            <article data-tab-num="1" data-visible="false">
+                {% if customer.orders.size != 0 %}
+
+                {% for order in customer.orders %}
+                <h3>
+                    {{ order.name | link_to: order.customer_url }}
+                    {% comment %}{{ order.name | link_to: order.customer_url }}{% endcomment %}
+                    <span class="date">{{ order.created_at | date: "%B %d, %Y" }}</span>
+                </h3>
+
+                <div class="row">
+                    {% for item in order.line_items %}
+                    {{ item.title | link_to: item.url }} - {{ item.quantity }}x<br>
+                    {% endfor %}
+                    <b>{{ order.fulfillment_status }}</b>
+                </div>
+                {% endfor %}
+
+                {% else %}
+
+                You haven't placed any orders yet.
+
+                {% endif %}
+            </article>
+            {% comment %}
+            <article data-tab-num="2" data-visible="false">
+                <p>Buy it new, wear it well, sell it back. Our clothes just get better in time. That's the Well-Worn Project.</p>
+                <p>&nbsp;</p>
+                <p>Follow these steps to get in the mix:&nbsp;</p>
+                <ol>
+                <li style="font-weight: 400;"><span style="font-weight: 400;">Wear your Alex Crane clothing everyday (or most days...)&nbsp;</span></li>
+                <li style="font-weight: 400;"><span style="font-weight: 400;">Wash warm and tumble dry cool</span></li>
+                <li style="font-weight: 400;"><a href="/account/register"><span style="font-weight: 400;">Join the Family</span></a></li>
+                <li style="font-weight: 400;">
+                <a href="/pages/contact">Write us</a> to let us know what's coming.</li>
+                <li style="font-weight: 400;"><span style="font-weight: 400;">Send it back for 50% credit towards your next purchase</span></li>
+                <li style="font-weight: 400;"><span style="font-weight: 400;">Stay tuned to see what we make of your Well-Worn piece</span></li>
+                </ol>
+                <p>&nbsp;</p>
+                <p><span style="font-weight: 400;">More info&nbsp;<a href="/pages/policies#wellworn">here</a>.&nbsp;</span></p>
+                <p>&nbsp;</p>
+                <p><img src="//cdn.shopify.com/s/files/1/1892/3609/files/about_2.jpg?v=1501531947" alt=""></p>
+            </article>
+            {% endcomment %}
+        </div>
+    </section>
+</div>

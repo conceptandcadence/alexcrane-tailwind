@@ -1,0 +1,109 @@
+{%- include 'product-tags' -%}
+
+{% capture filter_values %}
+    {% for variant in product.variants %}
+        {% if variant.available %}
+            data-size_{{- variant.title -}}
+        {% endif %}
+    {% endfor %}
+    {% for tag in product.tags %}
+        {% if tag contains 'colorway--' %}
+            data-colorway-{{- tag | remove: 'colorway--' -}}
+        {% endif %}
+        {% if tag contains 'Colorway--' %}
+            data-colorway-{{- tag | remove: 'Colorway--' -}}
+        {% endif %}
+    {% endfor %}
+{% endcapture %}
+
+<div class="plp-item{% unless product.variants.size > 1 %} no-variants{% endunless %}" data-handle="{{ product.handle }}" data-state="default" data-material="{{ material_tag | downcase }}" {{ filter_values }} data-default-variant="{{ product.selected_or_first_available_variant.id }}">
+    <div class="plp-item__images">
+        {% assign product_hover_enabled = false %}
+        {% if product.images[1] %}
+          {% assign product_hover_image = product.images[1] %}
+          {% assign product_hover_enabled = true %}
+        {% else %}
+          {% assign product_hover_image = product.images[0] %}
+        {% endif %}
+
+        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: product_hover_image -%}
+        {%- assign image_url = product_hover_image | img_url: '4x5' -%}
+        <img class="plp-item__images-image lazyload-img lifestyle " loading="lazy"
+            src="{{ image_url }}"
+            data-src="{{ image_url }}"
+            data-widths="[{{ supported_sizes }}]"
+            sizes="(max-width: 700px) 50vw,33.33vw"
+            srcset="{{ image_srcset }}"
+            alt="{{ product_hover_image.alt | escape }}">
+        <noscript>
+            <img class="plp-item__images-image lifestyle" src="{{ product_hover_image | img_url: '400x' }}" alt="{{ product_hover_image.alt | escape }}">
+        </noscript>
+
+        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: product.featured_image -%}
+        {%- assign image_url = product.featured_image | img_url: '4x5' -%}
+        <img class="plp-item__images-image lazyload-img flat " loading="lazy"
+            src="{{ image_url }}"
+            data-src="{{ image_url }}"
+            data-widths="[{{ supported_sizes }}]"
+            sizes="(max-width: 700px) 50vw,33.33vw"
+            srcset="{{ image_srcset }}"
+            alt="{{ product.featured_image.alt | escape }}">
+        <noscript>
+            <img class="plp-item__images-image placeholder flat" src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.featured_image.alt | escape }}">
+        </noscript>
+        {% if product.tags contains 'ac-pick' %}
+          {% render 'icon-ac-pick' %}
+        {% endif %}
+    </div>
+
+    <div class="plp-item__info{% unless product_hover_enabled %} no-hover{% endunless %}">
+        <h2 class="plp-item__title">{{ product.title }}</h2>
+        <div class="plp-item__title plp-item__price">
+        {% if product.tags contains 'gift-card'%}
+            {{ product.price_min | money | remove: '.00' }}&ndash;{{ product.price_max | money | remove: '.00' }}
+        {% else %}
+            {% if product.price_varies %}
+                {{ product.price_max | money | remove: '.00' }}
+            {% else %}
+                <span class="sale-price">{{ product.price | money | remove: '.00' }}{% if localization.country.iso_code == 'CA' %} {{ localization.country.currency.iso_code }}{% endif %}</span>
+                {% if product.compare_at_price > product.price %}
+                    <s>{{ product.compare_at_price | money | remove: '.00' }}</s>
+                    {% assign price_difference = product.compare_at_price | minus: product.price %}
+                    {% assign percentage_difference = product.price | times: 1.00 | divided_by: product.compare_at_price %}
+                    {% assign percentage_difference = 1 | minus: percentage_difference | times: 100 | round | append: '% Off' %}
+                    <span class="discount-percentage">{{ percentage_difference }} {% if localization.country.iso_code == 'CA' %}{{ localization.country.currency.iso_code }}{% endif %}</span>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+        </div>
+    </div>
+
+    <a class="plp-item__link" href="{{ product.url | within: collection }}"><span class="visually-hidden">View {{ product.title }}</span></a>
+
+    <div class="plp-item__purchase">
+        <div class="plp-item__sizes">
+            <ul class="plp-item__size-list"> 
+                {% assign selected = true %} 
+                {% for variant in product.variants %}
+                    {% include 'variant-availability' %} 
+                    <li class="variant{% unless variant.available  %} soldout{% endunless %}{% if variant.metafields.custom_fields["preorder_estimated_ship_date"] != blank %} preorder{% endif %}" 
+                        data-variant="{{ variant.title }}"
+                        data-variant-id="{{ variant.id }}"
+                        data-product="{{ product.title | escape }} / {{ variant.title }}"
+                        data-price="{{- variant.price | money_without_currency | remove: '.00' -}}"
+                        data-compare-price="{{- variant.compare_at_price | money_without_currency | remove: '.00' -}}">                         
+                        <span class="label">{{ variant.title }}</span>
+                    </li> 
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="plp-item__button">
+            <span class="default">Quick Add</span>
+            <span class="select-size">Select a size</span>
+            <span class="adding">Adding to cart...</span>
+            <span class="success">Added to cart!</span>
+            <span class="error">Sorry there was a problem</span>
+        </div>
+    </div>
+    <script>window.productTags = {{ product.tags | json }};</script> 
+</div>

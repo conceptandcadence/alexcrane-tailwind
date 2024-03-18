@@ -1,0 +1,280 @@
+{% assign menu = linklists.shop-filters %}
+
+{% assign active_tag = 'men' %}
+{% if collection.handle == 'women' %} 
+    {% assign active_tag = 'women' %}
+{% endif %}
+{% if current_tags != blank %}
+    {% if current_tags contains 'men' %}
+        {% assign active_tag = 'men' %}
+    {% endif %}
+    {% if current_tags contains 'women' %}
+        {% assign active_tag = 'women' %}
+    {% endif %}
+{% endif %}
+{% assign active_filters = active_filter | remove: active_tag %}
+{% assign filter_material = '' %}
+{% assign filter_size = '' %}
+{% assign filter_color = '' %}
+{% for tag in current_tags %}
+    {% if tag != blank %}
+        {% if forloop.index > 1 %}
+            {% assign active_filters = active_filters | append: '+' %}
+        {% endif %}
+        {% assign active_filters = active_filters | append: tag | downcase %}
+    {% endif %}
+{% endfor %} 
+
+<ul id="collection-nav-mobile" aria-label="Collection Navigation - Mobile" data-active-menu="">
+    <li class="collection-nav-mobile__item shop"><a class="collection-nav-mobile__link" href="#">Categories<span class="collection-nav-mobile__toggle"></span></a></li>
+    <li class="collection-nav-mobile__item filter"><span class="shop-filters__clear">Clear Filter</span><a class="collection-nav-mobile__link" href="#">Filters<span class="collection-nav-mobile__toggle"></span></a></li>
+</ul>
+
+<nav id="collection-nav" aria-label="Collection Navigation - Desktop" data-active-menu="">
+  <div class="collection-nav collection-nav-container expanded init"> 
+    {% for link in linklists['primary-navigation-2023'].links %}
+      {% if link.title == 'Men' %}
+        {% if link.links != blank %}
+            {% for category_group in link.links %}  
+              {% if category_group.title == 'Collections' %}
+                <ul class="site-subnav-categories primary">
+                  {% for subcategories in category_group.links %}  
+                      <li class="site-subnav__item">
+                      {% if subcategories.title == 'Shop All' %}
+                          <a class="site-subnav__link{% if subcategories.current %} current{% endif %}" href= "/collections/{% if active_tag != blank %}{{ active_tag }}{% endif %}" tabindex="0">
+                              <span class="site-subnav__linktext">{{ subcategories.title }}</span>
+                          </a>
+                        {% else %}
+                          {% assign subcategory_url = subcategories.url | remove: '/men' %}
+                          <a class="site-subnav__link{% if subcategories.current %} current{% endif %}" href="{{ subcategory_url }}{% if active_tag != blank %}/{{ active_tag }}{% endif %}" tabindex="0">
+                              <span class="site-subnav__linktext">{{ subcategories.title }}</span>
+                          </a>
+                        {% endif %}
+                      </li>
+                  {% endfor %}
+                </ul> 
+              {% endif %} 
+              {% if category_group.title == 'Browse' %}
+                <ul class="site-subnav-categories secondary">
+                  {% for subcategories in category_group.links %}  
+                      <li class="site-subnav__item">
+                      {% if subcategories.title == 'Shop All' %}
+                          <a class="site-subnav__link{% if subcategories.current %} current{% endif %}" href= "/collections/{% if active_tag != blank %}{{ active_tag }}{% endif %}" tabindex="0">
+                              <span class="site-subnav__linktext">{{ subcategories.title }}</span>
+                          </a>
+                        {% else %}
+                          {% assign subcategory_url = subcategories.url | remove: '/men' %}
+                          <a class="site-subnav__link{% if subcategories.current %} current{% endif %}" href="{{ subcategory_url }}{% if active_tag != blank %}/{{ active_tag }}{% endif %}" tabindex="0">
+                              <span class="site-subnav__linktext">{{ subcategories.title }}</span>
+                          </a>
+                        {% endif %}
+                      </li>
+                  {% endfor %}
+                </ul> 
+              {% endif %} 
+            {% endfor %}
+            </div> 
+        {% endif %}  
+      {% endif %} 
+    {% endfor %} 
+  
+
+    {% if section.blocks.size > 0 %}
+        <div class="shop-filters">
+            <div class="active-filters">
+                {% for tag in current_tags %}
+                    {% unless tag == 'men' or tag == 'women' %}
+                    {% capture tag_string %}{{ tag }}{% endcapture %}
+                    {% capture tag_title %}{{ tag | replace: 'Colorway--','' | replace: 'material--','' | replace: 'Size--','' | replace: '-',' ' | capitalize }}{% endcapture %}
+                    {% capture tags_after_removal %}{{ current_tags | join: '+' | replace: tag_string, '' }}{% endcapture %}
+                    <a class="active-filter" href="{{ collection.url }}/{{ tags_after_removal | replace: '++','+' }}">{{ tag_title }}<span class="close">&times;</span></a>
+                    {% endunless %}
+                {% endfor %} 
+            </div>
+            <a href="#" class="shop-filters__clear" tabindex="0">Clear Filter</span>
+            <div class="shop-filters__toggle_wrapper">
+                <a class="shop-filters__toggle" href= "#">
+                  <span class="filter-toggle-icon icon-open">≡</span>
+                  <span class="filter-toggle-icon icon-close">&times;</span> 
+                  Filter
+                </a>
+            </div>
+        </div>
+    {% endif %}
+  </div>
+              <div class="shop-filters__container plp-nav-expanded init">
+              <div class="shop-filters__wrapper" data-filterset="fabric">
+                  <div class="filter-label">Material</div>
+                  <ul class="shop-filter-group fabrics">
+                      {% for block in section.blocks %}
+                          {% if block.type == 'fabric' %}
+                            {% if collection.all_tags.size > 0 %}
+                              {% for tag in collection.all_tags %}
+                                {% if tag == block.settings.tag %}
+                                  <li class="shop-filter-item">
+                                      <a class="shop-filter-toggle" href="{{ collection.url }}/{{ current_tags }}{{ active_filter | append: '+' | append: block.settings.tag | downcase }}" data-filter="[data-material='{{ block.settings.tag | downcase | remove: 'material--' }}']"><span class="filter-icon" style="{% if block.settings.color !=blank %}background-color: {{ block.settings.color }};{% endif %}{% if block.settings.image !=blank %}background-image: url({{ block.settings.image | img_url: '60x' }});{% endif %}"></span>{{ block.settings.label }}</a>
+                                  </li>
+                                {% endif %}
+                              {% endfor %}
+                            {% endif %}
+                          {% endif %}
+                      {% endfor %}
+                  </ul>
+              </div>
+              <div class="shop-filters__wrapper" data-filterset="size">
+              <div class="filter-label">Size</div>
+                  <ul class="shop-filter-group sizes">
+                      {% for block in section.blocks %}
+                          {% if block.type == 'size' %}
+                              <li class="shop-filter-item">
+                                  <a class="shop-filter-toggle size" href="#" data-filter="[data-size-{{ block.settings.label | downcase }}]">{{ block.settings.label }}</a>
+                              </li>
+                          {% endif %}
+                      {% endfor %}
+                  </ul>
+              </div>
+              <div class="shop-filters__wrapper" data-filterset="color">
+                  <div class="filter-label">Color</div>
+                  <ul class="shop-filter-group colors">
+                      {% for block in section.blocks %}
+                          {% if block.type == 'color' %}
+                            {% if collection.all_tags.size > 0 %}
+                              {% for tag in collection.all_tags %}
+                                {% if tag == block.settings.tag %}
+                                  <li class="shop-filter-item">
+                                      <a class="shop-filter-toggle" href="{{ collection.url }}/{{ current_tags }}{{ active_filter | append: '+' | append: block.settings.tag | downcase }}" data-filter="[data-colorway-{{- block.settings.tag | remove: 'colorway--' | remove: 'colorway' | remove: 'Colorway--' | remove: 'Colorway' -}}]"><span class="filter-icon" style="{% if block.settings.color !=blank %}background-color: {{ block.settings.color }};{% endif %}{% if block.settings.image !=blank %}background-image: url({{ block.settings.image | img_url: '60x' }});{% endif %}"></span>{{ block.settings.label }}</a>
+                                  </li>
+                                {% endif %}
+                              {% endfor %}
+                            {% endif %}
+                          {% endif %}
+                      {% endfor %}
+                  </ul>
+              </div>
+            </div>
+</nav>
+
+
+
+
+<link rel="stylesheet" href="{{ 'plp-navigation.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'plp-navigation.min.css' | asset_url | stylesheet_tag }}</noscript>
+<script src="{{ 'plp-navigation.min.js' | asset_url }}" defer="defer"></script>
+<style>
+  .shop-filter-item.disabled {
+    border-color: var(--color-grey-soft) !important;
+  }
+  .shop-filter-item.disabled a {
+    color: var(--color-grey-soft) !important;
+    pointer-events: none;
+  }  
+  .shop-filter-item.disabled a:after {
+    background-color: transparent !important;
+    top: 50%;
+    left: 50%;
+    bottom: unset;
+    transform: rotate(-45deg);
+    transition: opacity 0.35s ease-in-out;
+  } 
+  .shop-filters .shop-filters__wrapper .shop-filter-group.sizes .shop-filter-item.disabled:hover a, .shop-filters .shop-filters__wrapper .shop-filter-group.sizes .shop-filter-item.disabled:focus a {
+    color: var(--color-grey-soft) !important;
+  } 
+  .shop-filter-item.disabled:hover a:after, .shop-filter-item.disabled:focus a:after {
+    background-color: var(--color-grey-soft) !important;
+    top: 50%;
+    left: 50%;
+    bottom: unset;
+    transform: rotate(-45deg);
+  } 
+  .filtered-out {
+    display: none !important;
+  }
+</style>
+{% schema %}
+  {
+    "name": "PLP Navigation",
+    "class": "plp-navigation-section",
+    "settings": [
+        {
+            "type":"text",
+            "id":"fabric_title",
+            "label":"Fabric Filters Heading"
+        },
+        {
+            "type":"text",
+            "id":"size_title",
+            "label":"Sizes Filters Heading"
+        },
+        {
+            "type":"text",
+            "id":"color_title",
+            "label":"Colors Filters Heading"
+        }
+    ],
+    "blocks":[
+        {
+        "type":"fabric",
+        "name":"Fabric",
+        "settings":[
+            {
+                "type":"text",
+                "id":"label",
+                "label":"Filter Label"
+            },
+            {
+                "type":"text",
+                "id":"tag",
+                "label":"Product Tag",
+                "info":"The product tag that will be used to filter this option"
+            },
+            {
+                "type":"image_picker",
+                "id":"image",
+                "label":"Image"
+            }   
+          ]
+        }, {
+        "type":"size",
+        "name":"Size",
+        "settings":[
+            {
+                "type":"text",
+                "id":"label",
+                "label":"Filter Label"
+            }
+            ]
+        }, {
+        "type":"color",
+        "name":"Color",
+        "settings":[
+            {
+                "type":"text",
+                "id":"label",
+                "label":"Filter Label"
+            },
+            {
+                "type":"text",
+                "id":"tag",
+                "label":"Product Tag",
+                "info":"The product tag that will be used to filter this option"
+            },
+            {
+                "type":"color",
+                "id":"color",
+                "label":"Color"
+            },
+            {
+                "type":"image_picker",
+                "id":"image",
+                "label":"Image"
+            }            
+            ]
+        }
+    ],
+      "presets": [
+      {
+        "name": "PLP Navigation",
+        "category": "Collections"
+      }]
+  }
+{% endschema %}

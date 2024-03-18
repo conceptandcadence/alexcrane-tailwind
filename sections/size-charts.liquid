@@ -1,0 +1,919 @@
+{% for block in section.blocks %}
+    {% for tag in product.tags %}
+        {% if tag contains block.settings.tag %}
+            <section class="sizing-chart inactive" data-view="in">
+                <div class="sizechart__wrapper">
+                    <a class="sizing-chart__close" href="#">&times;</a>
+                    <div class="measurement-toggle"><a href="#" class="toggle-sizing-unit" data-unit="in">in</a><a href="#" class="toggle-sizing-unit" data-unit="cm">cm</a></div>
+                    {% if block.settings.title  %}
+                        <h3 class="sizing-chart__title">Size Guide: {{ block.settings.title }}</h3>{% endif %}
+                    {% if block.settings.description  %}
+                        <div class="sizing-chart__description">{{ block.settings.description }}</div>
+                    {% endif %}
+                    <div class="sizechart">
+                        <div class="sizechart__headers">
+                            <div class="sizechart__header descriptor">Size</div>
+                            {% if block.settings.size_1_title != blank %}<div class="sizechart__header title">{{ block.settings.size_1_title }}</div>{% endif %}
+                            {% if block.settings.size_2_title != blank %}<div class="sizechart__header title">{{ block.settings.size_2_title }}</div>{% endif %}
+                            {% if block.settings.size_3_title != blank %}<div class="sizechart__header title">{{ block.settings.size_3_title }}</div>{% endif %}
+                            {% if block.settings.size_4_title != blank %}<div class="sizechart__header title">{{ block.settings.size_4_title }}</div>{% endif %}
+                            {% if block.settings.size_5_title != blank %}<div class="sizechart__header title">{{ block.settings.size_5_title }}</div>{% endif %}
+                            {% if block.settings.size_6_title != blank %}<div class="sizechart__header title">{{ block.settings.size_6_title }}</div>{% endif %}
+                            {% if block.settings.size_7_title != blank %}<div class="sizechart__header title">{{ block.settings.size_7_title }}</div>{% endif %}
+                            {% if block.settings.size_8_title != blank %}<div class="sizechart__header title">{{ block.settings.size_8_title }}</div>{% endif %}
+                            {% if block.settings.size_9_title != blank %}<div class="sizechart__header title">{{ block.settings.size_9_title }}</div>{% endif %}
+                            {% if block.settings.size_10_title != blank %}<div class="sizechart__header title">{{ block.settings.size_10_title }}</div>{% endif %}
+                        </div>
+                        <div class="sizechart__measurement1">
+                            {% if block.settings.measurement_1_title %}<div class="sizechart__measurement_header">{{ block.settings.measurement_1_title }}</div>{% else %}<div class="sizechart__measurement_header toggle">Measurement 1</div>{% endif %}
+
+                            {% if block.settings.size_1_m1_in != blank or block.settings.size_1_m1_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_1_m1_in != blank %}<span data-view="in">{{ block.settings.size_1_m1_in }}</span>{% endif %}
+                                    {% if block.settings.size_1_m1_icm != blank %}<span data-view="cm">{{ block.settings.size_1_m1_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_2_m1_in != blank or block.settings.size_2_m1_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_2_m1_in != blank %}<span data-view="in">{{ block.settings.size_2_m1_in }}</span>{% endif %}
+                                    {% if block.settings.size_2_m1_icm != blank %}<span data-view="cm">{{ block.settings.size_2_m1_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_3_m1_in != blank or block.settings.size_3_m1_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_3_m1_in != blank %}<span data-view="in">{{ block.settings.size_3_m1_in }}</span>{% endif %}
+                                    {% if block.settings.size_3_m1_icm != blank %}<span data-view="cm">{{ block.settings.size_3_m1_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_4_m1_in != blank or block.settings.size_4_m1_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_4_m1_in != blank %}<span data-view="in">{{ block.settings.size_4_m1_in }}</span>{% endif %}
+                                    {% if block.settings.size_4_m1_icm != blank %}<span data-view="cm">{{ block.settings.size_4_m1_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_5_m1_in != blank or block.settings.size_5_m1_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_5_m1_in != blank %}<span data-view="in">{{ block.settings.size_5_m1_in }}</span>{% endif %}
+                                    {% if block.settings.size_5_m1_icm != blank %}<span data-view="cm">{{ block.settings.size_5_m1_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_6_m1_in != blank or block.settings.size_6_m1_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_6_m1_in != blank %}<span data-view="in">{{ block.settings.size_6_m1_in }}</span>{% endif %}
+                                    {% if block.settings.size_6_m1_icm != blank %}<span data-view="cm">{{ block.settings.size_6_m1_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_7_m1_in != blank or block.settings.size_7_m1_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_7_m1_in != blank %}<span data-view="in">{{ block.settings.size_7_m1_in }}</span>{% endif %}
+                                    {% if block.settings.size_7_m1_icm != blank %}<span data-view="cm">{{ block.settings.size_7_m1_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_8_m1_in != blank or block.settings.size_8_m1_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_8_m1_in != blank %}<span data-view="in">{{ block.settings.size_8_m1_in }}</span>{% endif %}
+                                    {% if block.settings.size_8_m1_icm != blank %}<span data-view="cm">{{ block.settings.size_8_m1_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_9_m1_in != blank or block.settings.size_9_m1_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_9_m1_in != blank %}<span data-view="in">{{ block.settings.size_9_m1_in }}</span>{% endif %}
+                                    {% if block.settings.size_9_m1_icm != blank %}<span data-view="cm">{{ block.settings.size_9_m1_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_10_m1_in != blank or block.settings.size_10_m1_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_10_m1_in != blank %}<span data-view="in">{{ block.settings.size_10_m1_in }}</span>{% endif %}
+                                    {% if block.settings.size_10_m1_icm != blank %}<span data-view="cm">{{ block.settings.size_10_m1_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        {% if block.settings.measurement_2_title != blank %}
+                        <div class="sizechart__measurement2">
+                            {% if block.settings.measurement_2_title %}<div class="sizechart__measurement_header">{{ block.settings.measurement_2_title }}</div>{% else %}<div class="sizechart__measurement_header toggle">Measurement 2</div>{% endif %}
+
+                            {% if block.settings.size_1_m2_in != blank or block.settings.size_1_m2_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_1_m2_in != blank %}<span data-view="in">{{ block.settings.size_1_m2_in }}</span>{% endif %}
+                                    {% if block.settings.size_1_m2_icm != blank %}<span data-view="cm">{{ block.settings.size_1_m2_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_2_m2_in != blank or block.settings.size_2_m2_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_2_m2_in != blank %}<span data-view="in">{{ block.settings.size_2_m2_in }}</span>{% endif %}
+                                    {% if block.settings.size_2_m2_icm != blank %}<span data-view="cm">{{ block.settings.size_2_m2_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_3_m2_in != blank or block.settings.size_3_m2_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_3_m2_in != blank %}<span data-view="in">{{ block.settings.size_3_m2_in }}</span>{% endif %}
+                                    {% if block.settings.size_3_m2_icm != blank %}<span data-view="cm">{{ block.settings.size_3_m2_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_4_m2_in != blank or block.settings.size_4_m2_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_4_m2_in != blank %}<span data-view="in">{{ block.settings.size_4_m2_in }}</span>{% endif %}
+                                    {% if block.settings.size_4_m2_icm != blank %}<span data-view="cm">{{ block.settings.size_4_m2_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_5_m2_in != blank or block.settings.size_5_m2_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_5_m2_in != blank %}<span data-view="in">{{ block.settings.size_5_m2_in }}</span>{% endif %}
+                                    {% if block.settings.size_5_m2_icm != blank %}<span data-view="cm">{{ block.settings.size_5_m2_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_6_m2_in != blank or block.settings.size_6_m2_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_6_m2_in != blank %}<span data-view="in">{{ block.settings.size_6_m2_in }}</span>{% endif %}
+                                    {% if block.settings.size_6_m2_icm != blank %}<span data-view="cm">{{ block.settings.size_6_m2_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_7_m2_in != blank or block.settings.size_7_m2_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_7_m2_in != blank %}<span data-view="in">{{ block.settings.size_7_m2_in }}</span>{% endif %}
+                                    {% if block.settings.size_7_m2_icm != blank %}<span data-view="cm">{{ block.settings.size_7_m2_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_8_m2_in != blank or block.settings.size_8_m2_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_8_m2_in != blank %}<span data-view="in">{{ block.settings.size_8_m2_in }}</span>{% endif %}
+                                    {% if block.settings.size_8_m2_icm != blank %}<span data-view="cm">{{ block.settings.size_8_m2_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_9_m2_in != blank or block.settings.size_9_m2_icm != blank %}
+                            <div class="sizechart__measurement_value">
+                                {% if block.settings.size_9_m2_in != blank %}<span data-view="in">{{ block.settings.size_9_m2_in }}</span>{% endif %}
+                                {% if block.settings.size_9_m2_icm != blank %}<span data-view="cm">{{ block.settings.size_9_m2_icm }}</span>{% endif %}
+                            </div>
+                            {% endif %}
+                            {% if block.settings.size_10_m2_in != blank or block.settings.size_10_m2_icm != blank %}
+                            <div class="sizechart__measurement_value">
+                                {% if block.settings.size_10_m2_in != blank %}<span data-view="in">{{ block.settings.size_10_m2_in }}</span>{% endif %}
+                                {% if block.settings.size_10_m2_icm != blank %}<span data-view="cm">{{ block.settings.size_10_m2_icm }}</span>{% endif %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        {% if block.settings.measurement_3_title != blank %}
+                        <div class="sizechart__measurement3">
+                            {% if block.settings.measurement_3_title %}<div class="sizechart__measurement_header">{{ block.settings.measurement_3_title }}</div>{% endif %}
+                        
+                            {% if block.settings.size_1_m3_in != blank or block.settings.size_1_m3_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_1_m3_in != blank %}<span data-view="in">{{ block.settings.size_1_m3_in }}</span>{% endif %}
+                                    {% if block.settings.size_1_m3_icm != blank %}<span data-view="cm">{{ block.settings.size_1_m3_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_2_m3_in != blank or block.settings.size_2_m3_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_2_m3_in != blank %}<span data-view="in">{{ block.settings.size_2_m3_in }}</span>{% endif %}
+                                    {% if block.settings.size_2_m3_icm != blank %}<span data-view="cm">{{ block.settings.size_2_m3_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_3_m3_in != blank or block.settings.size_3_m3_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_3_m3_in != blank %}<span data-view="in">{{ block.settings.size_3_m3_in }}</span>{% endif %}
+                                    {% if block.settings.size_3_m3_icm != blank %}<span data-view="cm">{{ block.settings.size_3_m3_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_4_m3_in != blank or block.settings.size_4_m3_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_4_m3_in != blank %}<span data-view="in">{{ block.settings.size_4_m3_in }}</span>{% endif %}
+                                    {% if block.settings.size_4_m3_icm != blank %}<span data-view="cm">{{ block.settings.size_4_m3_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_5_m3_in != blank or block.settings.size_5_m3_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_5_m3_in != blank %}<span data-view="in">{{ block.settings.size_5_m3_in }}</span>{% endif %}
+                                    {% if block.settings.size_5_m3_icm != blank %}<span data-view="cm">{{ block.settings.size_5_m3_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_6_m3_in != blank or block.settings.size_6_m3_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_6_m3_in != blank %}<span data-view="in">{{ block.settings.size_6_m3_in }}</span>{% endif %}
+                                    {% if block.settings.size_6_m3_icm != blank %}<span data-view="cm">{{ block.settings.size_6_m3_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_7_m3_in != blank or block.settings.size_7_m3_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_7_m3_in != blank %}<span data-view="in">{{ block.settings.size_7_m3_in }}</span>{% endif %}
+                                    {% if block.settings.size_7_m3_icm != blank %}<span data-view="cm">{{ block.settings.size_7_m3_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_8_m3_in != blank or block.settings.size_8_m3_icm != blank %}
+                                <div class="sizechart__measurement_value">
+                                    {% if block.settings.size_8_m3_in != blank %}<span data-view="in">{{ block.settings.size_8_m3_in }}</span>{% endif %}
+                                    {% if block.settings.size_8_m3_icm != blank %}<span data-view="cm">{{ block.settings.size_8_m3_icm }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.size_9_m3_in != blank or block.settings.size_9_m3_icm != blank %}
+                            <div class="sizechart__measurement_value">
+                                {% if block.settings.size_9_m3_in != blank %}<span data-view="in">{{ block.settings.size_9_m3_in }}</span>{% endif %}
+                                {% if block.settings.size_9_m3_icm != blank %}<span data-view="cm">{{ block.settings.size_9_m3_icm }}</span>{% endif %}
+                            </div>
+                            {% endif %}
+                            {% if block.settings.size_10_m3_in != blank or block.settings.size_10_m3_icm != blank %}
+                            <div class="sizechart__measurement_value">
+                                {% if block.settings.size_10_m3_in != blank %}<span data-view="in">{{ block.settings.size_10_m3_in }}</span>{% endif %}
+                                {% if block.settings.size_10_m3_icm != blank %}<span data-view="cm">{{ block.settings.size_10_m3_icm }}</span>{% endif %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% if block.settings.measurement_1_title != blank and block.settings.measurement_1_description != blank %}
+                        <div class="sizechart__measurement_description">
+                            <strong>{{ block.settings.measurement_1_title }}</strong>
+                            <div class="sizechart__measurement_content">{{ block.settings.measurement_1_description }}</div>
+                        </div>
+                    {% endif %}
+                    {% if block.settings.measurement_2_title != blank and block.settings.measurement_2_description != blank %}
+                        <div class="sizechart__measurement_description">
+                            <strong>{{ block.settings.measurement_2_title }}</strong>
+                            <div class="sizechart__measurement_content">{{ block.settings.measurement_2_description }}</div>
+                        </div>
+                    {% endif %}
+                    {% if block.settings.measurement_3_title != blank and block.settings.measurement_3_description != blank %}
+                        <div class="sizechart__measurement_description">
+                            <strong>{{ block.settings.measurement_3_title }}</strong>
+                            <div class="sizechart__measurement_content">{{ block.settings.measurement_3_description }}</div>
+                        </div>
+                    {% endif %}
+                    <div class="sizechart__questions">
+                        <strong>Questions?</strong> Write us at <a href="mailto:hey@alexcrane.co">hey@alexcrane.co</a>
+                    </div>
+                </div>
+            </section>
+            {% if block.settings.tag == 'size-kidssuntee' or block.settings.tag == 'size-kidsboshorts' %}
+                <script>
+                    window.productSizingHelperRange = false;
+                    window.productSizingHelperText = "{{ block.settings.sizinghelper_text | strip }}";
+                    window.productSizingHelper = {
+                        "{{ block.settings.size_1_title }}": "{{ block.settings.size_1_m1_in | escape }}",
+                        "{{ block.settings.size_2_title }}": "{{ block.settings.size_2_m1_in | escape }}",
+                        "{{ block.settings.size_3_title }}": "{{ block.settings.size_3_m1_in | escape }}",
+                        "{{ block.settings.size_4_title }}": "{{ block.settings.size_4_m1_in | escape }}",
+                        "{{ block.settings.size_5_title }}": "{{ block.settings.size_5_m1_in | escape }}",
+                        "{{ block.settings.size_6_title }}": "{{ block.settings.size_6_m1_in | escape }}",
+                        "{{ block.settings.size_7_title }}": "{{ block.settings.size_7_m1_in | escape }}",
+                        "{{ block.settings.size_8_title }}": "{{ block.settings.size_8_m1_in | escape }}",
+                        "{{ block.settings.size_9_title }}": "{{ block.settings.size_9_m1_in | escape }}",
+                        "{{ block.settings.size_10_title }}": "{{ block.settings.size_10_m1_in | escape }}"
+                    };
+                </script> 
+                <style>
+                    :root {
+                        --sizing-helper-text: '{{ block.settings.sizinghelper_text | strip }}';
+                    }
+										/*
+                    .variant-selector li.selected {
+                        position: relative;
+                    }
+                    .variant-selector li.selected:before {
+                        content: '';
+                        display: inline-block;
+                        position: absolute;
+                        bottom: -14px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        height: 12px;
+                        width: 1px;
+                        background-color: #000;
+                    }
+                    .variant-selector li.selected:after {
+                        display: inline-block;
+                        position: absolute;
+                        content: var(--sizing-helper-text);
+                        bottom: -42px;
+                        white-space: pre;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        padding: 4px 8px;
+                        border: solid 1px #000;
+                        font-weight: 500;
+                    } 
+                    */
+                </style>
+            {% endif %}
+            {% if block.settings.tag == 'size-boshorts' %}
+                <script>
+                    window.swapDashforSlash = true;
+                    window.productSizingHelperText = "{{ block.settings.sizinghelper_text | strip }}";
+                    window.productSizingHelper = {
+                        "{{ block.settings.size_1_title }}": "{{ block.settings.size_1_m1_in | escape }}",
+                        "{{ block.settings.size_2_title }}": "{{ block.settings.size_2_m1_in | escape }}",
+                        "{{ block.settings.size_3_title }}": "{{ block.settings.size_3_m1_in | escape }}",
+                        "{{ block.settings.size_4_title }}": "{{ block.settings.size_4_m1_in | escape }}",
+                        "{{ block.settings.size_5_title }}": "{{ block.settings.size_5_m1_in | escape }}",
+                        "{{ block.settings.size_6_title }}": "{{ block.settings.size_6_m1_in | escape }}",
+                        "{{ block.settings.size_7_title }}": "{{ block.settings.size_7_m1_in | escape }}",
+                        "{{ block.settings.size_8_title }}": "{{ block.settings.size_8_m1_in | escape }}",
+                        "{{ block.settings.size_9_title }}": "{{ block.settings.size_9_m1_in | escape }}",
+                        "{{ block.settings.size_10_title }}": "{{ block.settings.size_10_m1_in | escape }}"
+                    };
+                </script> 
+                <style>
+                    :root {
+                        --sizing-helper-text: '{{ block.settings.sizinghelper_text | strip }}';
+                    }
+										/*
+                    .variant-selector li.selected {
+                        position: relative;
+                    }
+                    .variant-selector li.selected:before {
+                        content: '';
+                        display: inline-block;
+                        position: absolute;
+                        bottom: -14px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        height: 12px;
+                        width: 1px;
+                        background-color: #000;
+                    }
+                    .variant-selector li.selected:after {
+                        display: inline-block;
+                        position: absolute;
+                        content: var(--sizing-helper-text);
+                        bottom: -42px;
+                        white-space: pre;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        padding: 4px 8px;
+                        border: solid 1px #000;
+                        font-weight: 500;
+                    }
+                    */
+                </style>
+            {% endif %}
+            {% if block.settings.tag == 'size-bopants' %}
+                <script>
+                    window.swapDashforSlash = true;
+                    window.productSizingHelperText = "{{ block.settings.sizinghelper_text | strip }}";
+                    window.productSizingHelper = {
+                        "{{ block.settings.size_1_title }}": "{{ block.settings.size_1_m1_in | escape }}",
+                        "{{ block.settings.size_2_title }}": "{{ block.settings.size_2_m1_in | escape }}",
+                        "{{ block.settings.size_3_title }}": "{{ block.settings.size_3_m1_in | escape }}",
+                        "{{ block.settings.size_4_title }}": "{{ block.settings.size_4_m1_in | escape }}",
+                        "{{ block.settings.size_5_title }}": "{{ block.settings.size_5_m1_in | escape }}",
+                        "{{ block.settings.size_6_title }}": "{{ block.settings.size_6_m1_in | escape }}",
+                        "{{ block.settings.size_7_title }}": "{{ block.settings.size_7_m1_in | escape }}",
+                        "{{ block.settings.size_8_title }}": "{{ block.settings.size_8_m1_in | escape }}",
+                        "{{ block.settings.size_9_title }}": "{{ block.settings.size_9_m1_in | escape }}",
+                        "{{ block.settings.size_10_title }}": "{{ block.settings.size_10_m1_in | escape }}"
+                    };
+                </script> 
+                <style>
+                    :root {
+                        --sizing-helper-text: '{{ block.settings.sizinghelper_text | strip }}';
+                    }
+										/*
+                    .variant-selector li.selected {
+                        position: relative;
+                    }
+                    .variant-selector li.selected:before {
+                        content: '';
+                        display: inline-block;
+                        position: absolute;
+                        bottom: -14px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        height: 12px;
+                        width: 1px;
+                        background-color: #000;
+                    }
+                    .variant-selector li.selected:after {
+                        display: inline-block;
+                        position: absolute;
+                        content: var(--sizing-helper-text);
+                        bottom: -42px;
+                        white-space: pre;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        padding: 4px 8px;
+                        border: solid 1px #000;
+                        font-weight: 500;
+                    }
+                    */
+                </style>
+            {% endif %}
+            {% if block.settings.tag == 'size-primobelt' %}
+                <script>
+                    window.swapDashforSlash = true;
+                    window.productSizingHelperText = "{{ block.settings.sizinghelper_text | strip }}";
+                    window.productSizingHelper = {
+                        "{{ block.settings.size_1_title }}": "{{ block.settings.size_1_m1_in | escape }}",
+                        "{{ block.settings.size_2_title }}": "{{ block.settings.size_2_m1_in | escape }}",
+                        "{{ block.settings.size_3_title }}": "{{ block.settings.size_3_m1_in | escape }}",
+                        "{{ block.settings.size_4_title }}": "{{ block.settings.size_4_m1_in | escape }}",
+                        "{{ block.settings.size_5_title }}": "{{ block.settings.size_5_m1_in | escape }}",
+                        "{{ block.settings.size_6_title }}": "{{ block.settings.size_6_m1_in | escape }}",
+                        "{{ block.settings.size_7_title }}": "{{ block.settings.size_7_m1_in | escape }}",
+                        "{{ block.settings.size_8_title }}": "{{ block.settings.size_8_m1_in | escape }}",
+                        "{{ block.settings.size_9_title }}": "{{ block.settings.size_9_m1_in | escape }}",
+                        "{{ block.settings.size_10_title }}": "{{ block.settings.size_10_m1_in | escape }}"
+                    };
+                </script> 
+                <style>
+                    :root {
+                        --sizing-helper-text: '{{ block.settings.sizinghelper_text | strip }}';
+                    }
+										/*
+                    #single-product section.product-info .purchase form .variant-selector {
+                      	margin-bottom: 4rem;
+                      }
+                    .variant-selector li.selected {
+                        position: relative;
+                    }
+                    .variant-selector li.selected:before {
+                        content: '';
+                        display: inline-block;
+                        position: absolute;
+                        bottom: -14px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        height: 12px;
+                        width: 1px;
+                        background-color: #000;
+                    }
+                    .variant-selector li.selected:after {
+                        display: inline-block;
+                        position: absolute;
+                        content: var(--sizing-helper-text);
+                        bottom: -42px;
+                        white-space: pre;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        padding: 4px 8px;
+                        border: solid 1px #000;
+                        font-weight: 500;
+                    }
+                    */
+                </style>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+{% schema %} 
+
+{
+   "name":"Size Charts",
+   "settings":[
+
+   ],
+   "blocks":[
+      {
+         "type":"sizechart",
+         "name":"Size Chart",
+         "settings":[
+            {
+               "type":"text",
+               "id":"title",
+               "label":"Title",
+               "info": "Title of the product group that this size chart belongs to."
+            },
+            {
+                "type":"text",
+                "id":"tag",
+                "label":"Tag",
+                "info": "The product tag name that will be used to trigger this size chart."
+             },
+            {
+                "type":"richtext",
+                "id":"description",
+                "label":"Description",
+                "default": "<p>Compare with a garment that fits you well. Measure<br/>Measure with the garment laying flat.</p>"
+             },
+            {
+                "type":"text",
+                "id":"measurement_1_title",
+                "label":"Measurement 1 Title",
+                "info": "The descriptor for the Measurement 1, i.e. Shoulder or Waist."
+             },
+             {
+                "type":"richtext",
+                "id":"measurement_1_description",
+                "label":"Measurement 1 Instructions",
+                "default": "<p>Measure from one edge of waistband to the other. Multiply by 2 to determine total measurement.</p>"
+             },
+             {
+                "type":"text",
+                "id":"measurement_2_title",
+                "label":"Measurement 2 Title",
+                "info": "The descriptor for the Measurement 1, i.e. Length or Inseam."
+             },
+             {
+                "type":"richtext",
+                "id":"measurement_2_description",
+                "label":"Measurement 2 Instructions",
+                "default": "<p>Measure from the crotch seam to the bottom hem.</p>"
+             },
+             {
+                "type":"text",
+                "id":"measurement_3_title",
+                "label":"Measurement 3 Title",
+                "info": "The descriptor for the Measurement 1, i.e. Length or Inseam."
+             },
+             {
+                "type":"richtext",
+                "id":"measurement_3_description",
+                "label":"Measurement 3 Instructions",
+                "default": "<p>Measure from the crotch seam to the bottom hem.</p>"
+             },
+             {
+                "type":"text",
+                "id":"sizinghelper_text",
+                "label":"Sizing Helper Text",
+                "default": "[size] Waist",
+                "info": "Only for Bo Shorts. The text [size] will be replaced by the actual size the user has selected"
+             },
+            {
+               "type":"header",
+               "content":"Size 1"
+            },
+            {
+                "type":"text",
+                "id":"size_1_title",
+                "label":"Size 1 Name"
+             },
+             {
+                "type":"text",
+                "id":"size_1_m1_in",
+                "label":"Measurement 1 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_1_m1_icm",
+                "label":"Measurement 1 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_1_m2_in",
+                "label":"Measurement 2 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_1_m2_icm",
+                "label":"Measurement 2 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_1_m3_in",
+                "label":"Measurement 3 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_1_m3_icm",
+                "label":"Measurement 3 CM"
+             },
+             {
+                "type":"header",
+                "content":"Size 2"
+             },
+             {
+                "type":"text",
+                "id":"size_2_title",
+                "label":"Size 2 Name"
+             },
+             {
+                "type":"text",
+                "id":"size_2_m1_in",
+                "label":"Measurement 1 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_2_m1_icm",
+                "label":"Measurement 1 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_2_m2_in",
+                "label":"Measurement 2 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_2_m2_icm",
+                "label":"Measurement 2 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_2_m3_in",
+                "label":"Measurement 3 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_2_m3_icm",
+                "label":"Measurement 3 CM"
+             },
+             {
+                "type":"header",
+                "content":"Size 3"
+             },
+             {
+                "type":"text",
+                "id":"size_3_title",
+                "label":"Size 3 Name"
+             },
+             {
+                "type":"text",
+                "id":"size_3_m1_in",
+                "label":"Measurement 1 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_3_m1_icm",
+                "label":"Measurement 1 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_3_m2_in",
+                "label":"Measurement 2 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_3_m2_icm",
+                "label":"Measurement 2 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_3_m3_in",
+                "label":"Measurement 3 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_3_m3_icm",
+                "label":"Measurement 3 CM"
+             },
+             {
+                "type":"header",
+                "content":"Size 4"
+             },
+             {
+                "type":"text",
+                "id":"size_4_title",
+                "label":"Size 4 Name"
+             },
+             {
+                "type":"text",
+                "id":"size_4_m1_in",
+                "label":"Measurement 1 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_4_m1_icm",
+                "label":"Measurement 1 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_4_m2_in",
+                "label":"Measurement 2 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_4_m2_icm",
+                "label":"Measurement 2 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_4_m3_in",
+                "label":"Measurement 3 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_4_m3_icm",
+                "label":"Measurement 3 CM"
+             },
+             {
+                "type":"header",
+                "content":"Size 5"
+             },
+             {
+                "type":"text",
+                "id":"size_5_title",
+                "label":"Size 5 Name"
+             },
+             {
+                "type":"text",
+                "id":"size_5_m1_in",
+                "label":"Measurement 1 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_5_m1_icm",
+                "label":"Measurement 1 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_5_m2_in",
+                "label":"Measurement 2 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_5_m2_icm",
+                "label":"Measurement 2 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_5_m3_in",
+                "label":"Measurement 3 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_5_m3_icm",
+                "label":"Measurement 3 CM"
+             },
+             {
+                "type":"header",
+                "content":"Size 6"
+             },
+             {
+                "type":"text",
+                "id":"size_6_title",
+                "label":"Size 6 Name"
+             },
+             {
+                "type":"text",
+                "id":"size_6_m1_in",
+                "label":"Measurement 1 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_6_m1_icm",
+                "label":"Measurement 1 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_6_m2_in",
+                "label":"Measurement 2 IN"
+             },  
+             {
+                "type":"text",
+                "id":"size_6_m2_icm",
+                "label":"Measurement 2 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_6_m3_in",
+                "label":"Measurement 3 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_6_m3_icm",
+                "label":"Measurement 3 CM"
+             },
+             {
+                "type":"header",
+                "content":"Size 7"
+             },
+             {
+                "type":"text",
+                "id":"size_7_title",
+                "label":"Size 7 Name"
+             },
+             {
+                "type":"text",
+                "id":"size_7_m1_in",
+                "label":"Measurement 1 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_7_m1_icm",
+                "label":"Measurement 1 CM" 
+             },
+             {
+                "type":"text",
+                "id":"size_7_m2_in",
+                "label":"Measurement 2 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_7_m2_icm",
+                "label":"Measurement 2 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_7_m3_in",
+                "label":"Measurement 3 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_7_m3_icm",
+                "label":"Measurement 3 CM"
+             },
+             {
+                "type":"header",
+                "content":"Size 8"
+             },
+             {
+                "type":"text",
+                "id":"size_8_title",
+                "label":"Size 8 Name"
+             },
+             {
+                "type":"text",
+                "id":"size_8_m1_in",
+                "label":"Measurement 1 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_8_m1_icm",
+                "label":"Measurement 1 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_8_m2_in",
+                "label":"Measurement 2 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_8_m2_icm",
+                "label":"Measurement 2 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_8_m3_in",
+                "label":"Measurement 3 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_8_m3_icm",
+                "label":"Measurement 3 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_9_title",
+                "label":"Size 9 Name"
+             },
+             {
+                "type":"text",
+                "id":"size_9_m1_in",
+                "label":"Measurement 1 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_9_m1_icm",
+                "label":"Measurement 1 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_9_m2_in",
+                "label":"Measurement 2 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_9_m2_icm",
+                "label":"Measurement 2 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_9_m3_in",
+                "label":"Measurement 3 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_9_m3_icm",
+                "label":"Measurement 3 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_10_title",
+                "label":"Size 10 Name"
+             },
+             {
+                "type":"text",
+                "id":"size_10_m1_in",
+                "label":"Measurement 1 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_10_m1_icm",
+                "label":"Measurement 1 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_10_m2_in",
+                "label":"Measurement 2 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_10_m2_icm",
+                "label":"Measurement 2 CM"
+             },
+             {
+                "type":"text",
+                "id":"size_10_m3_in",
+                "label":"Measurement 3 IN"
+             },
+             {
+                "type":"text",
+                "id":"size_10_m3_icm",
+                "label":"Measurement 3 CM"
+             }
+         ]
+      }
+   ],
+   "presets":[]
+}
+
+{% endschema %}
