@@ -6978,6 +6978,7 @@
           "872ac63d-6139-4169-a381-dfaf18bc1fa5",
           "badf849a-12aa-4d96-a73c-61f6b0d0554a"
         ],
+        "disabled": true,
         "settings": {
           "variation": "all",
           "title": "",
@@ -7032,6 +7033,7 @@
           "3eb06f6e-2155-4ef3-ad71-fe49d83f278a",
           "e85cd41f-808c-441e-a639-2a6ae960d91b"
         ],
+        "disabled": true,
         "settings": {
           "variation": "all",
           "use_carousel": false,
@@ -8547,6 +8549,7 @@
           "ab90a210-a05e-4728-a4c7-631fec54658a",
           "47c68329-f893-4d2b-be9d-32c625f9dd21"
         ],
+        "disabled": true,
         "custom_css": [
           ".lp-banner-split__background {border: 0;}"
         ],
@@ -9307,6 +9310,7 @@
           "c5af2b9d-75ae-4d1b-9ec3-7950f2f6f47d",
           "189c35d1-31ca-41f0-ad4e-4c09d3ef7ba7"
         ],
+        "disabled": true,
         "settings": {
           "variation": "all",
           "title": "",
