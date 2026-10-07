@@ -338,7 +338,7 @@
                       </div>
                   {% endif %} 
                 {% endif %} 
-                {% if material_cactus' %}
+                {% if material_cactus %}
                     <div class="product-detail-material leather">
                         <div class="product-detail-material-title">
                             <span style="margin-left: 0;">Cactus</span>
@@ -348,7 +348,7 @@
                         </div>
                     </div>
                 {% endif %} 
-                {% if material_cactus' %}
+                {% if material_cactus %}
                     <div class="product-detail-material leather">
                         <div class="product-detail-material-title">
                             <span style="margin-left: 0;">Cactus</span>
@@ -454,4 +454,16 @@
 	width: 100%;
 	max-width: 100%;
 }
-</style>
+</style>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% if material_cactus' %}"
+  to: "{% if material_cactus %}"
+  position: 20976..21000
+- from: "{% if material_cactus' %}"
+  to: "{% if material_cactus %}"
+  position: 21511..21535
+{%- endcomment -%}
